@@ -10,6 +10,8 @@
     "prop-types": "^15.7.2",
     "react": "16.6.1",
     "react-native": "0.57.5",
+    "react-native-gesture-handler": "1.1.0",
+    "react-navigation": "^4.0.10",
     "reactotron-react-native": "^4.0.3"
   },
   "devDependencies": {
