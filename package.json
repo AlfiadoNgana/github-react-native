@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "react-devtool": "react-devtools"
   },
   "dependencies": {
     "@react-native-community/async-storage": "react-native-community/async-storage",
@@ -14,6 +15,7 @@
     "react-native": "0.57.5",
     "react-native-gesture-handler": "1.1.0",
     "react-native-status-bar-height": "^2.4.0",
+    "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.0.10",
     "reactotron-react-native": "^4.0.3"
   },

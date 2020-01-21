@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
@@ -79,3 +80,9 @@ export default class Welcome extends Component {
     );
   }
 }
+
+Welcome.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};
