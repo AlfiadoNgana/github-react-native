@@ -10,7 +10,7 @@ import Header from '~/components/Header';
 import styles from './styles';
 
 const TabIcon = ({ tintColor }) => (
-  <Icon name="building" size={20} color={tintColor} />
+  <Icon name="list-alt" size={20} color={tintColor} />
 );
 TabIcon.propTypes = {
   tintColor: PropTypes.string.isRequired,
@@ -22,15 +22,22 @@ export default class Repositories extends Component {
     this.state = {
       data: [],
       loading: true,
+      refreshing: false,
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.loadRepositories();
+  }
+
+  loadRepositories = async () => {
+    this.setState({ refreshing: true });
+
     const username = await AsyncStorage.getItem('@githuber:username');
     const { data } = await api.get(`/users/${username}/repos`);
 
-    this.setState({ data, loading: false });
-  }
+    this.setState({ data, loading: false, refreshing: false });
+  };
 
   static navigationOptions = {
     tabBarIcon: TabIcon,
@@ -58,13 +65,15 @@ export default class Repositories extends Component {
   );
 
   renderList = () => {
-    const { data } = this.state;
+    const { data, refreshing } = this.state;
 
     return (
       <FlatList
         data={data}
         keyExtractor={item => String(item.id)}
         renderItem={this.renderListItem}
+        onRefresh={this.loadRepositories}
+        refreshing={refreshing}
       />
     );
   };
